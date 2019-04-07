@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "ssm.dao.UsersDao">
+    <insert id="insertUser">
+        insert ignore into Users(userId,userName,passWord)
+        values (#{userId},#{userName},#{passWord})
+    </insert>
+    <select id="getUserByID" resultType="ssm.entity.Users">
+        select userId,userName,passWord
+        from Users
+        where userId=#{userId};
+    </select>
+    <update id="updatePasswordByID">
+        update Users
+        set passWord = #{passWord}
+        where userId = #{userId}
+    </update>
+</mapper>
